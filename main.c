@@ -18,7 +18,9 @@ void CompteBancaire ()
     printf("PRENOM: \n\t");
     scanf("%s",User.PRENOM);
     printf("CIN: \n\t");
-    scanf("%d",User.CIN);
+    scanf("%s",User.CIN);
+    printf("montant: \n\t");
+    scanf("%f",&User.montant);
 
 }
 
@@ -49,6 +51,22 @@ int main()
             goto MENU;
         }
         break;
+
+    case 2:
+       printf("Troduire plusieurs comptes bancaire: \n");
+       printf("Veuillez remplir la fiche suivante: \n");
+       CompteBancaire ();
+       printf("le compte bancaire a ete cree avec succes. \n");
+       do
+       {
+           printf(" Creer plusieurs comptes. \n");
+           CompteBancaire ();
+       }while (choix<1 || choix>4);
+       break;
+
+    case 3:
+        printf("Operations: \n");
+
 
     return 0;
     }
