@@ -6,22 +6,19 @@ struct compteUSER
 {
     char CIN[10];
     char NOM[20];
-    char PRENOM [20];
+    char PRENOM[20];
     float montant;
 }User;
 
 struct compteUSER db[50];
 int i = 0;
 
-void MENU ()
-{
-   printf("\n1- Creer un  compte \n");
-   printf("2- Creer plusieurs comptes \n");
-   printf("3- Afficher mon compte/solde \n");
-   printf("4- Operations \n");
-   printf("6- Affichage \n");
-   printf("7- Quitter l'application \n\n");
-}
+void MENU ();
+void backMENU ();
+void CompteBancaire ();
+void otherAcc ();
+void depotMoney ();
+void retraitMoney ();
 
 int main()
 {
@@ -36,24 +33,15 @@ int main()
         printf("creer un compte : \n");
         printf("veuillez remplir la fiche suivante: \n");
         CompteBancaire ();
-        printf("Pour revenir au menu principale, entrez 0. \n");
-        scanf("%d",&l);
-        if (l == 0)
-        {
-            MENU ();
-        }
+        backMENU ();
         break;
 
     case 2:
        printf("creer plusieurs comptes bancaire: \n");
        otherAcc ();
-       printf("Pour revenir au menu principale, entrez 0. \n");
-        scanf("%d",&l);
-        if (l == 0)
-        {
-            MENU ();
-        }
+       backMENU ();
        break;
+
     case 3:
         printf("Operations: \n");
         printf("1- Depot.\n");
@@ -62,15 +50,36 @@ int main()
         if(c == 1)
         {
            depotMoney ();
+           backMENU ();
         }
         else
         {
             retraitMoney ();
+            backMENU ();
         } break;
+
 
     return 0;
 }
 }
+}
+void MENU ()
+{
+   printf("\n1- Creer un  compte \n");
+   printf("2- Creer plusieurs comptes \n");
+   printf("3- Operations \n");
+   printf("4- Fidelisation \n");
+   printf("5- Affichage \n");
+   printf("6- Quitter l'application \n\n");
+}
+void backMENU ()
+{
+    int l=1;
+    scanf("%d",&l);
+    if (l == 0)
+    {
+        MENU ();
+    }
 }
 void CompteBancaire ()
 {
@@ -89,15 +98,15 @@ void CompteBancaire ()
 }
 void otherAcc ()
 {
-       int n,i=1;
-       printf("\nVeuillez entrer le nombre du nouveax comptes que vous voulez creer:");
+       int n,i;
+       printf("\nVeuillez entrer le nombre du nouveax comptes que vous voulez creer:\n");
        scanf("%d",&n);
        printf("Veuillez remplir la fiche suivante: \n");
-       do
+       for(i=0;i<=n;i++)
        {
            CompteBancaire ();
-           i++;
-       }while (i<=n);
+           i++;  
+       }
 }
 void depotMoney ()
 {
@@ -113,6 +122,7 @@ void depotMoney ()
     while (b < 50){
         if (strcmp(db[b].CIN , cin) == 0){
             db[b].montant += som;
+            printf("votre solde apres le depot est: %f",db[b].montant);
             break;
         }
         b++;
@@ -134,6 +144,7 @@ void retraitMoney ()
         if(strcmp(db[b].CIN,cin) == 0)
         {
             db[b].montant -= som;
+            printf("votre solde apres le retrait est: %f",db[b].montant);
             break;
         }
         b++;
