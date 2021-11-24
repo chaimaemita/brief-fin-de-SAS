@@ -20,6 +20,7 @@ void otherAcc ();
 void depotMoney ();
 void retraitMoney ();
 
+
 int main()
 {
     int choix,c,l=1;
@@ -105,7 +106,7 @@ void otherAcc ()
        for(i=0;i<=n;i++)
        {
            CompteBancaire ();
-           i++;  
+           i++;
        }
 }
 void depotMoney ()
@@ -150,18 +151,24 @@ void retraitMoney ()
         b++;
     }
 }
-/*void OrdreAscendant ()
+/*void OrdreAscendant (db[],int s)
 {
     int i,j,tmp;
     printf("Affichage des comptes par ordre Ascendant:\n");
-    for(i=0;i<n;i++)
+    for(i=0;i<s-1;i++)
     {
-        for(j=0;j<n;j++)
+        for(j=0;j<s-1;j++)
         {
+            if (db[j].montant>db[j+1].montant)
+            {
+                tmp[0]=db[j];
+                db[j]=db[j+1];
+                db[j+1]=tmp[0];
+            }
 
         }
     }
 
-}
-*/
+}*/
+
 
