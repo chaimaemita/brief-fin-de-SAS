@@ -20,7 +20,6 @@ void otherAcc ();
 void depotMoney ();
 void retraitMoney ();
 
-
 int main()
 {
     int choix,c,l=1;
@@ -34,12 +33,14 @@ int main()
         printf("creer un compte : \n");
         printf("veuillez remplir la fiche suivante: \n");
         CompteBancaire ();
+        printf("\nPOUR RETENIR A MENU PRINCIPAL, ENTREZ 0\n");
         backMENU ();
         break;
 
     case 2:
        printf("creer plusieurs comptes bancaire: \n");
        otherAcc ();
+       printf("\nPOUR RETENIR A MENU PRINCIPAL, ENTREZ 0\n");
        backMENU ();
        break;
 
@@ -51,14 +52,30 @@ int main()
         if(c == 1)
         {
            depotMoney ();
+           printf("\nPOUR RETENIR A MENU PRINCIPAL, ENTREZ 0\n");
            backMENU ();
         }
         else
         {
             retraitMoney ();
+            printf("\nPOUR RETENIR A MENU PRINCIPAL, ENTREZ 0\n");
+
             backMENU ();
         } break;
-
+    case 4:
+        printf("Affichage\n\n :");
+        int choix4;
+        printf("1- Par Ordre Ascendant\n\n");
+        printf("2- Par Ordre Descendant\n\n");
+        printf("3- Par Ordre Ascendant ayant un montant superieur à un chiffre introduit\n\n");
+        printf("3- Par Ordre Ascendant ayant un montant inferieur à un chiffre introduit\n\n");
+        printf("Recherche par CIN\n\n");
+        scanf("%d",choix4);
+        if (choix4==1)
+        {
+            printf("Par Ordre Ascendant");
+        }
+        
 
     return 0;
 }
@@ -103,10 +120,9 @@ void otherAcc ()
        printf("\nVeuillez entrer le nombre du nouveax comptes que vous voulez creer:\n");
        scanf("%d",&n);
        printf("Veuillez remplir la fiche suivante: \n");
-       for(i=0;i<=n;i++)
+       for(i=0;i<n;i++)
        {
            CompteBancaire ();
-           i++;
        }
 }
 void depotMoney ()
@@ -146,29 +162,9 @@ void retraitMoney ()
         {
             db[b].montant -= som;
             printf("votre solde apres le retrait est: %f",db[b].montant);
+
             break;
         }
         b++;
     }
 }
-/*void OrdreAscendant (db[],int s)
-{
-    int i,j,tmp;
-    printf("Affichage des comptes par ordre Ascendant:\n");
-    for(i=0;i<s-1;i++)
-    {
-        for(j=0;j<s-1;j++)
-        {
-            if (db[j].montant>db[j+1].montant)
-            {
-                tmp[0]=db[j];
-                db[j]=db[j+1];
-                db[j+1]=tmp[0];
-            }
-
-        }
-    }
-
-}*/
-
-
